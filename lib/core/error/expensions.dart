@@ -76,10 +76,10 @@ handleDioException(DioException e) {
     case DioExceptionType.sendTimeout:
       throw SendTimeoutException(ErrorModel.fromJson(e.response!.data));
     case DioExceptionType.cancel:
-      throw CancelException(ErrorModel(errorMessage: e.toString(), statusCode: 500));
+      throw CancelException(ErrorModel.fromJson(e.response!.data));
 
     case DioExceptionType.unknown:
-      throw UnknownException(ErrorModel(errorMessage: e.toString(), statusCode: 500));
+      throw UnknownException(ErrorModel.fromJson(e.response!.data));
 
     case DioExceptionType.badResponse:
       switch (e.response!.statusCode) {
@@ -96,7 +96,7 @@ handleDioException(DioException e) {
         case 500: //cofficient
           throw CofficientException(ErrorModel.fromJson(e.response!.data));
         case 504: // Bad request
-          throw BadResponseException(ErrorModel(statusCode: 504, errorMessage: e.response!.data));
+          throw BadResponseException(ErrorModel.fromJson(e.response!.data));
         default:
           throw ServerException(ErrorModel.fromJson(e.response!.data));
       }
