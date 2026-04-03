@@ -3,5 +3,5 @@ import 'package:clean_architecture_practice/features/user/domain/entities/user_e
 import 'package:dartz/dartz.dart';
 
 abstract class UserRepositories {
- Future<Either<Failure, UserEntities>> getuser();
+ Future<Either<Failure, UserEntities>> getuser({required int id});
 }

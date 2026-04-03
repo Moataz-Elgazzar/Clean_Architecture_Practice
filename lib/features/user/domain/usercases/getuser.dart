@@ -6,7 +6,7 @@ import 'package:dartz/dartz.dart';
 class Getuser {
   final UserRepositories repositories;
   Getuser({required this.repositories});
-  Future<Either<Failure, UserEntities>> call() {
-    return repositories.getuser();
+  Future<Either<Failure, UserEntities>> call({required int id}) async {
+    return repositories.getuser(id: id);
   }
 }
